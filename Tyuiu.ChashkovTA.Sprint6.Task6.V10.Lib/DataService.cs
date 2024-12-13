@@ -11,20 +11,17 @@ namespace Tyuiu.ChashkovTA.Sprint6.Task6.V10.Lib
                 throw new FileNotFoundException("Файл не найден.");
             }
 
-            string[] wordsWithW;
-
             try
             {
                 string content = File.ReadAllText(path);
                 string[] words = content.Split(new[] { ' ', '\t', '\n', '\r', ',', '.', '!', '?' }, StringSplitOptions.RemoveEmptyEntries);
-                wordsWithW = words.Where(word => word.Contains("w") || word.Contains("W")).ToArray();
+                string[] wordsWithW = words.Where(word => word.Contains("w") || word.Contains("W")).ToArray();
+                return string.Join(" ", wordsWithW);
             }
             catch (Exception ex)
             {
                 throw new Exception("Ошибка обработки файла: " + ex.Message);
             }
-
-            return string.Join(" ", wordsWithW);
         }
     }
 }
