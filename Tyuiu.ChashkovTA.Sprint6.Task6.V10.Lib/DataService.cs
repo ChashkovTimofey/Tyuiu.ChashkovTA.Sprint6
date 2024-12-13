@@ -15,7 +15,7 @@ namespace Tyuiu.ChashkovTA.Sprint6.Task6.V10.Lib
             {
                 string content = File.ReadAllText(path);
                 string[] words = content.Split(new[] { ' ', '\t', '\n', '\r', ',', '.', '!', '?' }, StringSplitOptions.RemoveEmptyEntries);
-                string[] wordsWithW = words.Where(word => word.Contains("w") || word.Contains("W")).ToArray();
+                string[] wordsWithW = words.Where(word => word.Contains("w") ).ToArray();
                 return string.Join(" ", wordsWithW);
             }
             catch (Exception ex) 
