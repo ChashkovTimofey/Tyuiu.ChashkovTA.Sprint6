@@ -15,12 +15,12 @@ namespace Tyuiu.ChashkovTA.Sprint6.Task7.V30.Lib
             {
                 string[] lines = File.ReadAllLines(path);
                 int rowCount = lines.Length;
-                int colCount = lines[0].Split(',').Length;
+                int colCount = lines[0].Split(';').Length;
                 int[,] matrix = new int[rowCount, colCount];
 
                 for (int i = 0; i < rowCount; i++)
                 {
-                    int[] rowValues = lines[i].Split(',').Select(int.Parse).ToArray();
+                    int[] rowValues = lines[i].Split(';').Select(int.Parse).ToArray();
                     for (int j = 0; j < colCount; j++)
                     {
                         matrix[i, j] = rowValues[j];
