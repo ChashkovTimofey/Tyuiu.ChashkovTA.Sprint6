@@ -6,27 +6,28 @@ namespace Tyuiu.ChashkovTA.Sprint6.Task1.V17.Lib
     {
         public double[] GetMassFunction(int startValue, int stopValue)
         {
-            int count = stopValue - startValue + 1;
-            double[] results = new double[count];
 
-            for (int i = 0; i < count; i++)
+            Func<int, double> function = x => Math.Pow(x, 2) + 2 * x - 5;
+
+            int step = 1; 
+
+            double[] result = new double[(stopValue - startValue) / step + 1];  
+
+            int index = 0;
+            for (int x = startValue; x <= stopValue; x += step)
             {
-                double x = startValue + i;
-                double y;
-
                 try
                 {
-                    y = CalculateF(x);
+                    result[index] = function(x);
+                    index++;
                 }
-                catch (DivideByZeroException)
+                catch (Exception ex)
                 {
-                    y = 0; // Handle division by zero
+                    return null; 
                 }
-
-                results[i] = y;
             }
 
-            return results;
+            return result;
         }
     }
 }
