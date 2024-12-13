@@ -43,30 +43,5 @@ namespace Tyuiu.ChashkovTA.Sprint6.Task7.V30.Lib
             }
         }
 
-        public void SaveMatrix(string path, int[,] matrix)
-        {
-            try
-            {
-                int rowCount = matrix.GetLength(0);
-                int colCount = matrix.GetLength(1);
-                string[] lines = new string[rowCount];
-
-                for (int i = 0; i < rowCount; i++)
-                {
-                    string[] rowValues = new string[colCount];
-                    for (int j = 0; j < colCount; j++)
-                    {
-                        rowValues[j] = matrix[i, j].ToString();
-                    }
-                    lines[i] = string.Join(",", rowValues);
-                }
-
-                File.WriteAllLines(path, lines);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Ошибка сохранения файла: " + ex.Message);
-            }
-        }
     }
 }
