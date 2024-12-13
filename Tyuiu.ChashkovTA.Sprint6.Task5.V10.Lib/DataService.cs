@@ -21,8 +21,8 @@ namespace Tyuiu.ChashkovTA.Sprint6.Task5.V10.Lib
                 {
                     if (double.TryParse(part, out double value))
                     {
-                        double roundedValue = Math.Round(value, 2); // Округление до 2 знаков после запятой
-                        if (roundedValue != 0) // Игнорировать нули
+                        double roundedValue = Math.Round(value, 2); 
+                        if (roundedValue != 0) 
                         {
                             dataList.Add(roundedValue);
                         }
