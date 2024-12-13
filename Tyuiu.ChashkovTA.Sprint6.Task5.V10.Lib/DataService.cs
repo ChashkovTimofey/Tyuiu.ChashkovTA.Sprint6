@@ -15,28 +15,22 @@ namespace Tyuiu.ChashkovTA.Sprint6.Task5.V10.Lib
 
             foreach (var line in File.ReadLines(path))
             {
-
-                string[] parts = line.Split(new[] { ' ', ',' }, StringSplitOptions.RemoveEmptyEntries);
+                string[] parts = line.Split(new[] { ' ', ',', '\t' }, StringSplitOptions.RemoveEmptyEntries);
 
                 foreach (var part in parts)
                 {
                     if (double.TryParse(part, out double value))
                     {
-                        dataList.Add(Math.Round(value, 3));
+                        double roundedValue = Math.Round(value, 2); // Округление до 2 знаков
+                        if (roundedValue != 0) // Игнорировать нули
+                        {
+                            dataList.Add(roundedValue);
+                        }
                     }
                 }
             }
 
-            List<double> filteredData = new List<double>();
-            foreach (var data in dataList)
-            {
-                if (data != 0)
-                {
-                    filteredData.Add(data);
-                }
-            }
-
-            return filteredData.ToArray();
+            return dataList.ToArray();
         }
     }
 }
